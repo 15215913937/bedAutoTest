@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+
+  chrome:
+    image: selenium/node-chrome:4.0.0-beta-1-20220207
+    shm_size: 2gb
+    depends_on:
+      - selenoid
+    environment:
+      - "SE_EVENT_BUS_HOST=selenoid"
+      - "SE_EVENT_BUS_PUBLISH_PORT=4442"
+      - "SE_EVENT_BUS_SUBSCRIBE_PORT=4443"
+
+  firefox:
+    image: selenium/node-firefox:4.0.0-beta-1-20220207
+    shm_size: 2gb
+    depends_on:
+      - selenoid
+    environment:
+      - "SE_EVENT_BUS_HOST=selenoid"
+      - "SE_EVENT_BUS_PUBLISH_PORT=4442"
+      - "SE_EVENT_BUS_SUBSCRIBE_PORT=4443"
+
+  selenoid:
+    image: aerokube/selenoid:latest
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    ports:
+      - "4444:4444"
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    command: pytest
+
+  allure:
+    image: frankescobar/allure-docker-service
+    ports:
+      - "5050:5050"
