@@ -11,7 +11,7 @@ class MainPageLocators(object):
 
 
 class LoginPageLocators(object):
-    USERNAME = (By.ID, 'username')
+    USERNAME = (By.ID, 'name')
     PASSWORD = (By.ID, 'password')
     LOGIN_BUTTON = (By.CSS_SELECTOR, 'button[type="submit"]')
 

@@ -1,0 +1,7 @@
+pytest==6.2.5
+selenium==4.1.0
+pytest-selenium==2.0.1
+allure-pytest==2.9.45
+PyYAML==6.0
+requests==2.27.1
+loguru==0.6.0
