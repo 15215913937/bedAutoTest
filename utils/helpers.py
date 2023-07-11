@@ -26,8 +26,8 @@ class Helpers():
     # 使用示例
 
 
-from locators import MainPageLocators
-
-helpers = Helpers(driver)
-helpers.click(MainPageLocators.LOGIN_BTN)
-helpers.input(MainPageLocators.SEARCH_BOX, "Automation")
+# from locators import MainPageLocators
+#
+# helpers = Helpers(driver)
+# helpers.click(MainPageLocators.LOGIN_BTN)
+# helpers.input(MainPageLocators.SEARCH_BOX, "Automation")

@@ -28,5 +28,5 @@ class Log:
 
 
 # 使用示例
-my_logger = Log.get_logger()
-my_logger.info('This is a logs message')
+# my_logger = Log.get_logger()
+# my_logger.info('This is a logs message')

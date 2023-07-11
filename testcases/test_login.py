@@ -11,22 +11,19 @@ from utils.driver import Driver
 class TestLogin:
 
     def setup_class(self):
-        self.driver = Driver.get_driver()
+        self.driver = Driver.driver
         self.login_page = LoginPage(self.driver)
+        self.driver.open("http://bed.test.cnzxa.cn")
 
     def teardown_class(self):
         Driver.quit_driver()
-
-    def test_open_baidu(self):
-        self.driver.get("http://bed.test.cnzxa.cn")
-        time.sleep(5)
-        # assert self.baidu_page.is_title_match() == True
 
     @pytest.mark.parametrize("username, password", [
         ("test123", "123456"),
         ("test456", "456789")
     ])
     def test_valid_login(self, username, password):
+
         self.login_page.login(username, password)
         return "success"
     #     assert self.login_page.is_login_successful()
